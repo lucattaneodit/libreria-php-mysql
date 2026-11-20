@@ -1,0 +1,251 @@
+/* Estilos comunes: index.html, inserirLlibre.php y buscarLlibre.php */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    padding: 20px 16px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Fondo: foto de cielo que cubre toda la pantalla
+       (el color azul solo se ve mientras carga la foto) */
+    background: #2f6db5 url("../img/cielo.jpg") center / cover no-repeat fixed;
+}
+
+/* El título va dentro de una franja blanca para que se lea sobre las nubes */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 8px 20px;
+    border-radius: 8px;
+}
+
+/* ---- Barra de navegación ---- */
+.barra {
+    width: 900px;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 12px 20px;
+    border-radius: 10px;
+    border-bottom: 4px solid #f5c400;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+}
+
+.barra a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 4px;
+    border-bottom: 3px solid transparent;
+}
+
+.barra a:hover,
+.barra a.activo {
+    border-bottom-color: #f5c400;
+}
+
+/* Nombre de la librería: solo texto, no es un enlace */
+.barra .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000000;
+    letter-spacing: 0.5px;
+    margin-right: 10px;
+}
+
+/* Buscador dentro de la barra (se va a la derecha) */
+.buscador {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+}
+
+.buscador input[type="search"] {
+    padding: 8px 10px;
+    border: 1px solid #e6cf6b;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.buscador input[type="submit"] {
+    width: auto;
+    padding: 8px 14px;
+    font-size: 14px;
+}
+
+/* Tarjeta blanca (la usan el formulario, el resultado y el buscador) */
+.tarjeta {
+    width: 400px;
+    max-width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-top: 6px solid #f5c400;
+}
+
+/* Tarjeta más ancha para la lista de libros */
+.tarjeta.ancha {
+    width: 700px;
+}
+
+/* Tabla con la lista de libros */
+.lista {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lista th,
+.lista td {
+    text-align: left;
+    padding: 9px 8px;
+    border-bottom: 1px solid #f0e3a8;
+}
+
+.lista th {
+    background-color: #f5c400;
+    color: #000000;
+}
+
+.lista td:nth-child(2),
+.lista td:nth-child(3),
+.lista th:nth-child(2),
+.lista th:nth-child(3) {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.lista tr:hover td {
+    background-color: #fff8d6;
+}
+
+.lista a {
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.lista a:hover {
+    text-decoration: underline;
+}
+
+/* En móvil, el buscador ocupa toda la fila */
+@media (max-width: 600px) {
+    .buscador {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .buscador input[type="search"] {
+        flex: 1;
+        width: auto;
+    }
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #000000;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #e6cf6b;
+    border-radius: 5px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #f5c400;
+    box-shadow: 0 0 5px rgba(245, 196, 0, 0.5);
+}
+
+/* Botón amarillo (submit y enlace "Insertar otro libro") */
+input[type="submit"],
+.boton {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #f5c400;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover,
+.boton:hover {
+    background-color: #ffd83d;
+}
+
+/* ---- Página de resultado ---- */
+
+.tarjeta h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.tarjeta p {
+    margin-bottom: 15px;
+    color: #000000;
+    line-height: 1.4;
+}
+
+.ok h2 {
+    color: #2e7d32;
+}
+
+.error h2 {
+    color: #c62828;
+}
+
+.error {
+    border-top-color: #c62828;
+}
+
+.conexion {
+    font-size: 14px;
+    color: #2e7d32 !important;
+}
+
+/* Tabla con los datos del libro insertado */
+.datos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.datos th,
+.datos td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #f0e3a8;
+}
+
+.datos th {
+    color: #000000;
+    width: 45%;
+}

@@ -1,0 +1,41 @@
+# "XAMPP" con Docker:
+#   web        -> PHP + Apache   http://localhost:8080
+#   db         -> MySQL (MariaDB)
+#   phpmyadmin -> phpMyAdmin     http://localhost:8082
+#
+# Arrancar:  docker compose up -d
+# Parar:     docker compose down
+# Borrar la BD y empezar de cero:  docker compose down -v
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./www:/var/www/html   # tus archivos .html y .php
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:11
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: libreria   # BD por defecto para los scripts de sql/
+    volumes:
+      # La primera vez ejecuta los .sql de sql/ por orden alfabético:
+      # libreria.sql (BD + tabla + usuario) -> libros_cdmon.sql -> libros_datos.sql (50 libros)
+      - ./sql:/docker-entrypoint-initdb.d
+      - datos:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:5
+    ports:
+      - "8082:80"
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+
+volumes:
+  datos:

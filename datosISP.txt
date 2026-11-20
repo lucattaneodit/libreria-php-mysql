@@ -1,0 +1,14 @@
+DATOS DEL ISP (CDMON) - inserirLlibre.php
+
+Link de acceso:      http://(pendiente)/index.html
+
+Acceso FTP
+  Servidor / IP:     (pendiente)
+  Usuario:           (pendiente)
+  Contraseña:        (pendiente)
+
+Base de datos
+  Servidor:          (pendiente)
+  Nombre BD:         (pendiente)
+  Usuario:           (pendiente)
+  Contraseña:        (pendiente)
