@@ -10,6 +10,7 @@ Prueba práctica: formulario para registrar nuevos libros en la base de datos `l
 | `www/index.html` | Formulario (título, número de páginas, precio) que envía los datos a `inserirLlibre.php` por POST. |
 | `sql/libreria.sql` | Crea la base de datos `libreria`, la tabla `libros` y el usuario de conexión. |
 | `www/buscarLlibre.php` | Extra: lista de libros con buscador por título y página de detalles de cada libro. |
+| `www/variables.php` | Datos de conexión a la base de datos (versión local). Los PHP lo cargan con `include`. |
 | `www/css/style.css` | Estilos comunes de todas las páginas (barra de navegación, tarjetas, tablas). |
 | `sql/libros_datos.sql` | 50 libros de ejemplo para la tabla `libros`. |
 | `sql/libros_cdmon.sql` | Solo la tabla `libros`, para importarla en el phpMyAdmin de CDMON. |
@@ -42,15 +43,15 @@ Para pararlo: `docker compose down`.
 
 1. Copia el contenido de `www/` en `htdocs/libreria/`.
 2. En phpMyAdmin, importa `sql/libreria.sql`.
-3. En `inserirLlibre.php`, cambia `$servidor = 'db';` por `$servidor = 'localhost';`.
+3. En `www/variables.php`, cambia `$servidor = 'db';` por `$servidor = 'localhost';`.
 4. Abre http://localhost/libreria
 
 ## Publicación en el ISP (CDMON)
 
 1. En el panel de CDMON, crea una base de datos MySQL y apunta: servidor, nombre de la BD, usuario y contraseña.
 2. En el phpMyAdmin de CDMON, importa `sql/libros_cdmon.sql` (crea la tabla `libros`) y después `sql/libros_datos.sql` (los 50 libros).
-3. En `www/inserirLlibre.php` y `www/buscarLlibre.php`, cambia `$servidor`, `$usuario`, `$contrasenha` y `$bd` por los datos de CDMON.
-4. Sube el contenido de `www/` por FTP (por ejemplo con FileZilla) a la carpeta pública del hosting.
+3. Crea `cdmon/variables.php` con los datos de CDMON (`$servidor`, `$usuario`, `$contrasenha`, `$bd`). Este archivo está en `.gitignore` y no se sube a GitHub.
+4. Sube la web con `bash cdmon/subir_cdmon.sh` (FTP), o súbela con FileZilla poniendo `cdmon/variables.php` en lugar de `www/variables.php`.
 5. Rellena `datosISP.txt` con el link y los datos de acceso.
 
 ## Créditos

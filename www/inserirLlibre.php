@@ -2,12 +2,8 @@
 // Desactivamos las excepciones: comprobamos los errores nosotros con if
 mysqli_report(MYSQLI_REPORT_OFF);
 
-// Datos de conexión
-// (en el ISP hay que cambiarlos por los que te dé el hosting)
-$servidor    = 'db';           // en XAMPP sería 'localhost'
-$usuario     = 'libreria';
-$contrasenha = 'libreria123';
-$bd          = 'libreria';
+// Datos de conexión ($servidor, $usuario, $contrasenha, $bd)
+include("variables.php");
 
 // Variables para pintar el resultado en el HTML de abajo
 $clase    = 'error';   // 'ok' o 'error' (cambia el color de la tarjeta)

@@ -2,11 +2,8 @@
 // Buscador de libros: lista los libros (filtrando por título) y muestra el detalle de uno
 mysqli_report(MYSQLI_REPORT_OFF);
 
-// Datos de conexión (los mismos que en inserirLlibre.php)
-$servidor    = 'db';           // en XAMPP sería 'localhost'
-$usuario     = 'libreria';
-$contrasenha = 'libreria123';
-$bd          = 'libreria';
+// Datos de conexión ($servidor, $usuario, $contrasenha, $bd)
+include("variables.php");
 
 // Lo que llega por la URL (GET):
 //   buscarLlibre.php?q=quijote  -> busca por título
