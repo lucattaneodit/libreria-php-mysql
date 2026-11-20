@@ -1,14 +1,7 @@
 DATOS DEL ISP (CDMON) - inserirLlibre.php
 
-Link de acceso:      http://(pendiente)/index.html
+Link de acceso:  http://librerialuce.com.mialias.net
+IP:              185.42.105.105
 
-Acceso FTP
-  Servidor / IP:     (pendiente)
-  Usuario:           (pendiente)
-  Contraseña:        (pendiente)
-
-Base de datos
-  Servidor:          (pendiente)
-  Nombre BD:         (pendiente)
-  Usuario:           (pendiente)
-  Contraseña:        (pendiente)
+Las contraseñas de acceso (web, FTP y base de datos) se han entregado a la profesora
+por email, para no publicarlas en este repositorio público.
